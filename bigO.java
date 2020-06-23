@@ -67,3 +67,10 @@ T2 = O(1) + n*O(1) + O(1)
     = c4 + n*c5 = O(n)
 // find the fastest growing term
 // take out the coefficient
+
+array_2d = [[1,2,3],[4,2,7],[2,3,3]]
+// 2 dimensional array
+
+T3 = O(1) + n^2*O(1) + O(1)
+T3 = O(n^2)
+quadratic time complexity
