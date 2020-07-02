@@ -27,6 +27,7 @@ public class Queue <T> implements Iterable <T> {
         return list.peekFirst()
     }
 
+    // removes a node with the highest priority
     public T poll() {
         if(isEmpty())
             throw new RuntimeException("Queue Empty");
