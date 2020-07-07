@@ -113,9 +113,45 @@ public class Main (
         // || or operator -- if one of the condition is true, then it will return true
         // ! the not operator -- if the condition is not true, then we get true (opposite )
         boolean compare = x < y && y > z || z + 2 < 5 || x + 7 > y;
-        
+
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+
+        if(s.equal("tim")) {
+            System.out.println("You typed tim");
+        }
     }
 ) 
+
+// Nested Statements
+
+// create an input in console
+// grab the input and compare with conditions
+// next an if statement inside of if statement
+package tutorial;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.print("Input your age: ");
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int age = Integer.parseInt(s);
+
+        if (age >= 13) {
+            System.out.println("Input your favorite food: ");
+            String food = sc.nextLine();
+
+            if (food.equals("pizza")) {
+                System.out.println("mine too")
+            } else {
+                System.out.println("not mine")
+            }
+        } else {
+            System.out.println("you can't ride");
+        }
+    }
+}
 
 
 
