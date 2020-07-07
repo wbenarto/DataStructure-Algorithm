@@ -93,6 +93,30 @@ public class Main {
 	}
 }
 
+// Conditions and Boolean
+package tutorial;
+import java.util.Scanner;
+
+public class Main (
+    
+    public static void main(String[] args) {
+        int x = 6;
+        int y = 7;
+        int z = 10;
+
+        // > < == >= <= !=
+        // will return value of true or false
+        boolean compare = x < y;
+
+        // for string can only compare == or !=
+        // && and ---- compare the conditions on left and right side are the same
+        // || or operator -- if one of the condition is true, then it will return true
+        // ! the not operator -- if the condition is not true, then we get true (opposite )
+        boolean compare = x < y && y > z || z + 2 < 5 || x + 7 > y;
+        
+    }
+) 
+
 
 
 
