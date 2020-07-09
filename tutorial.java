@@ -187,6 +187,89 @@ public class Main {
     }
 }
 
+package tutorial;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        // create integer x valued 0
+        int x = 0;
+
+        int[] arr = {1,3,6,4,27,8}
+
+        // creating for loop
+        // 1st: declaring variables x 
+        // 2nd: set condition
+        // 3rd: set the iteration
+
+
+        for (int i = 0; i<arr.length; i+=5 ) {
+            System.out.println(i);
+
+            if (arr[i] == 5) {
+                System.out.println(arr[i]);
+            }
+        }
+
+        // FOR EACH LOOP
+        String[] names = new String[5];
+
+        // Get input using scanner
+        Scanner sc = new Scanner(System.in);
+        int count = 0
+        // declare new element integer in arr, using it as index
+        // for each element in the array, do system.out 
+        for (int element: arr) {
+            System.out.println(element);
+            count++;
+        }
+
+
+        for (int i=0; i<names.length; i++) {
+            System.out.print("input: ");
+            String input = sc.nextLine();
+            names[i] = input;
+
+            
+        }
+
+        for (String n:names) {
+            System.out.println(n);
+
+            if (n.equals("tim")) {
+                // GET OUT OF THE LOOP
+                break;
+            }
+        }
+
+        // While loop 
+        // if you don't know how many times you will go over
+        // may change on user input
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Type a number: ");
+        // storing the int inside of x
+        int x = sc.nextInt();
+
+        while (x != 10) {
+            System.out.println("Type 10..");
+
+            // bring in the x 
+            x = sc.nextInt();
+        }
+
+        // do while loop
+        do {
+            System.out.println("Type 10..");
+
+            x = sc.nextInt();
+        } while {
+            
+        }
+    }
+}
+
 
 
 
