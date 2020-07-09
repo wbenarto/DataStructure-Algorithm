@@ -379,13 +379,41 @@ public class Main{
 
 
         int[] x = {-99, 2, 1 ,5 ,6 ,2, 1, 4}
-        Arrays.sort(x, 1, 7);
+
+        Arrays.sort(x, 1, 7); // (which array, from which index, to which index not including)
 
         System.out.println(x);
     }
 }
 
 
+// *** OBJECT ***
+package tutorial;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        sc.next();
+        int x = 5;
+        x.next();
+        String str = "hello"; // creating object String of value "hello"
+
+        str.length();
+
+        // the tim object methods are being called here
+        tim("Tim!", 4);
+    }
+
+    // type in arg string and integer
+    public static void tim(String str, int x) {
+        for (int i; i<x; i++){
+            System.out.println(str);
+        }
+
+        System.out.println(str);
+    }
+}
 
 
 // System.out.println(""); // to print in console 
