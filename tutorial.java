@@ -315,6 +315,75 @@ public class Main {
     }
 }
 
+// *** HASH MAPS ***
+package tutorial;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
+// Map is key value pair, similar to list and array, able to index,
+// indexing by keys. (ex: String, number, char, float, whatever)
+// 
+public class Main{
+    public static void main() {
+        Map m = new HashMap();
+
+        // .put(key, value)
+        m.put("tim",5);
+        m.put(11, 999)
+
+        // hash map does not sort the map
+        // .get the value from key of "tim"
+        System.out.println(m.get("tim"));
+
+
+        // *** Tree Map ***
+        // everything we keep will be sorted order
+        Map m = new Treemap();
+        m.put("tim", 5);
+        m.put("joe", "x");
+        m.put("a","b");
+
+        // *** Linked Hash Map ***
+        Map m = new LinkedHashMap();
+        m.put("joe", "x");
+        
+
+        m.clear();
+        m.get();
+        m.containsValue("x"); // looks up for the key
+        m.containsKey(5); // return true or false value. more useful
+        m.values(); // prints out all the values in the map
+        m.isEmpty();
+
+        String str = "hello my name is tmie and i am cool";
+
+        // using for loop
+        for (char x:str.toCharArray()) {
+            if (m.containsKey(x)){
+                int old = (int) m.get(x);
+                m.put(x, old+1);
+            } else {
+                m.put(x,1);
+            }
+
+            System.out.println(m);
+        }
+
+        m.remove(key);
+
+
+        int[] x = {-99, 2, 1 ,5 ,6 ,2, 1, 4}
+        Arrays.sort(x, 1, 7);
+
+        System.out.println(x);
+    }
+}
 
 
 
