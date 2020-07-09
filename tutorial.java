@@ -265,10 +265,56 @@ public class Main {
 
             x = sc.nextInt();
         } while {
-            
+
         }
     }
 }
+
+
+// **** SETS AND LIST ****
+package tutorial;
+import java.util.Scanner;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating integer set, named t set equals to HashSet (standard implementation of set)
+        // unordered list of elements, UNIQUE means no repeat elements
+        Set<Integer> t = new HashSet<Integer>();
+        t.add(5);
+        t.add(7);
+        t.add(5);
+        t.add(9);
+        t.remove(9);
+        t.clear();
+        t.isEmpty();
+        t.size();
+
+        // check if 5 is in the set
+        // very quick to find element
+        // arrays take longer than set
+        boolean x = t.contains(5);
+
+        System.out.println();
+
+        // TreeSet unique elements, and it is ordered om a tree map
+        // LinkedHashSet
+
+        // ArrayList
+        ArrayList<Integer> t = new ArrayList<Integer>();
+        t.add(1);
+        t.add(2);
+        t.get(0);
+        // change already established element in the index
+        // t.set(index, what do you want to change it with)
+        t.set(1,5);
+        t.subList(1,3);
+
+        System.out.println(t);
+    }
+}
+
 
 
 
