@@ -154,6 +154,40 @@ public class Main {
 }
 
 
+// Creating Arrays
+package tutorial;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Declare array, array type, and array length
+        // it's a set length, can't add pass that length
+        int[] newArr = new Int[5];
+        String[] newArr = new String[5]; 
+
+        {"hello", "hi", "tim", "bill", "joe"}
+        // last position of the arr is length -1
+        
+        // setting the values of all the elements in array
+        newArr[0] = "hello";
+        newArr[1] = "hello";
+        newArr[2] = "hello";
+        newArr[3] = "Joe";
+        newArr[4] = "hello";
+
+        int[] nums = {2,4,1,8,7};
+
+        String x = newArr[0];
+
+        System.out.println(x);
+        // will print out Joe
+
+        
+
+    }
+}
+
+
 
 
 // System.out.println(""); // to print in console 
