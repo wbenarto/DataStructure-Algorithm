@@ -504,4 +504,42 @@ public class Cat extends Dog {
 	}
 }
 
+// *** Checking equals *** 
+package tutorial;
+
+// interface, set of methods for class work
+public class Student implements Comparable<Student>{
+    private String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public boolean equals(Student other) {
+        if (this.name == other.name) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    // comparing this name to the other name, comparing the first letter
+    public int compareTo(Student other) {
+        return this.name.compareTo(other.name);
+    }
+
+    public String toString() {
+        return "Student(" + this.name + ")";
+    }
+}
+
+// *** Static ***
+// static variables will allows us to change 
+// static methods will allows to call using the constructor instead of this keyword
+// using this when you don't care about the instances
+
+// *** Void ***
+// we manipulate array, or anything else, but not returning values to call statement
+
 // System.out.println(""); // to print in console 
