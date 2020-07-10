@@ -534,6 +534,95 @@ public class Student implements Comparable<Student>{
     }
 }
 
+// **** Inner Classes ****
+package tutorial; 
+
+public class OuterClass {
+
+    public void inner() {
+        class InnerClass{
+            public void display() {
+            System.out.println("This is an inner class");
+        }
+        }
+        InnerClass in = new InnerClass();
+        in.display()
+    }
+}
+
+// *** Interfaces *** 
+// somewhat close to classes, inheritance
+// create new interface
+
+package tutorial;
+
+// to be inherited from Class 
+public interface Vehicle {
+    // we can only have public methods and we don't define any methods or attributes
+    // define that this method exists
+    
+    // any attributes has to be final means it will be constant and can't be changed
+    // use final to specify the attribute
+    final int gears = 5;
+
+    
+    void speedUp(int a);
+    void slowDown(int a);
+    void changeGear(int a);
+
+    default void out() {
+        // we can use this on any classes that uses interface
+        System.out.println("Default method");
+    }
+
+    // static method that we can just call statically
+    static int math(int b) {
+        return b + 9;
+    }
+
+}
+
+
+// in Car file
+package tutorial;
+
+public class Car implements Vehicle{
+    // need to implement all the abstract from interface
+    private int gear = 1;
+    private int speed = 0;
+
+    public void changeGear(int gear) {
+        this.gear = gear;
+    }
+
+    public speedUp(int change) {
+        this.speed += change
+    }
+
+    public slowDown(int change) {
+        this.speed -= change
+    }
+
+    public void display() {
+        System.out.println("I am a car, going at " + this.speed + "km/h and I'm in gear" + this.gear);
+        out();
+    }
+}
+
+// in main file
+package tutorial;
+
+public class Main {
+    public static void main (String[] args) {
+      // creating a new car object called ford
+      Car ford = new Car();
+      ford.speedUp(20);
+      ford.changeGear(2);
+      ford.display();  
+      
+    }
+}
+
 // *** Static ***
 // static variables will allows us to change 
 // static methods will allows to call using the constructor instead of this keyword
