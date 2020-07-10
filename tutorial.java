@@ -623,6 +623,36 @@ public class Main {
     }
 }
 
+// *** Enum ***
+// create new enum
+
+package tutorial;
+
+// 3 constants stored in the Level enum
+public enum Level {
+    HIGH,
+    MEDIUM,
+    LOW;
+}
+
+// in Main.java
+package tutorial;
+
+public class Main {
+    public static voic main(String[] args) {
+        Level lvl = Level.LOW;
+
+        String en = lvl.toString();
+        if (lvl == Level.LOW) {
+            System.out.println(lvl);
+        } else if (lvl == Level.MEDIUM) {
+            System.out.println(lvl);
+        } else {
+            System.out.println(lvl);
+        }
+    }
+}
+
 // *** Static ***
 // static variables will allows us to change 
 // static methods will allows to call using the constructor instead of this keyword
