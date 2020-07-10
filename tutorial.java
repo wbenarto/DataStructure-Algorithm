@@ -413,6 +413,16 @@ public class Main {
 
         System.out.println(str);
     }
+
+    // the int in this case specifying the method must return
+    // an integer 
+    public static int add2(int x) {
+        return x + 2;
+    }
+
+    public static String str(String x) {
+        return x + "!";
+    }
 }
 
 
