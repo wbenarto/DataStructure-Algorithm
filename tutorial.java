@@ -425,5 +425,83 @@ public class Main {
     }
 }
 
+// Creating Classes
+// new - class - input name Dog
+// every new class requires new file
+
+// class is a data type, use information from classes to create an object
+
+package tutorial;
+import java.util.ArrayList;
+
+// 
+public class Dog {
+   // have methods and attributes
+   // 2 attributes in dog class : name and age
+    
+   private String name;
+   private int age;
+   
+   // create constructor method
+   public Dog(String name, int age) {
+       this.name = name;
+       this.age = age;
+   }
+    
+    // void means it will not return anything
+   public void speak() {
+       System.out.println("I am " + this.name + " and I am " + this.age + " years old.")
+   }
+
+    // constructor to call private attributes from Dog class
+    public int getAge() {
+        return this.age;
+    }
+
+    // constructor to set age for new 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    // private here means can only be use and see in the dog class
+    private int add2() {
+        return this.age + 2;
+    }
+
+}
+
+// **** INHERITANCE **** 
+package tutorial;
+
+
+// Dog is super Class or parent class
+// Cat is child class or sub class
+// Copying all attributes from dog class 
+// protected will grant access to child class within the package
+public class Cat extends Dog {
+	// only accessable from Cat class
+	private int food; 
+	
+	public Cat(String name, int age, int food) {
+		// call the constructor from super class(Dog)
+		super(name, age);
+		this.food = food;
+	}
+	
+	public Cat(String name, int age) {
+		super(name, age);
+	}
+	
+	// if parameters is not required we can create other constructors
+	public Cat(String name) {
+		// if user only got name input, but no age
+		// so age is being set to 0 default value
+		super(name, 0);
+	}
+	// Changing the speak method from super
+	public void speak() {
+		System.out.println("Meow my name is " + this.name + " and I get fed " + this.food);
+	}
+}
 
 // System.out.println(""); // to print in console 
