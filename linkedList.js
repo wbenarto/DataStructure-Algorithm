@@ -130,7 +130,32 @@ class linkedList {
 
         return null;
     }
+    
+    delete(value) {
+        if(!this.head) {
+            return null;
+        }
 
+        while (this.head && this.head.value === value) {
+            this.head = this.head.next;
+        }
+
+        let curNode = this.head;
+
+        while (curNode.next) {
+            if(curNode.next.value === value) {
+                curNode.next = curNode.next.next;
+            } else {
+                curNode = curNode.next;
+            }
+        }
+
+        if (this.tail.value === value) {
+            this.tail = curNode;
+        }
+    }
+    
+    
    
 
     toArray() {
@@ -155,7 +180,9 @@ test1.append(4);
 
 test1.prepend('start');
 test1.append('end');
-
+test1.delete('end');
+test1.delete(3);
 let print = test1.toArray();
 
 console.log(print);
+console.log(test1.find(3));
