@@ -1,5 +1,88 @@
 const { link } = require("fs");
 
+// class linkedList {
+//     constructor() {
+//         this.head = null;
+//         this.tail = null;
+//     }
+
+//     append(value) {
+//         let newNode = {value : value, next : null};
+
+//         // if there is a node in this.tail, set the next value of tail to new Node
+//         if (this.tail) {
+//             this.tail.next = newNode;
+//         }
+//         // if tail is empty, set the newNode as the tail
+//         this.tail = newNode;
+
+//         // if head is empty, set newNode as the head also
+//         if (!this.head) {
+//             this.head = newNode;
+//         }
+//     }
+
+//     // adding element in the beginning 
+//     prepend(value) {
+//         let newNode = {value: value, next: this.head};
+
+//         this.head = newNode;
+
+//         if (!this.tail) {
+//             this.tail = newNode;
+//         }
+
+//     }
+
+//     delete(value) {
+//         if (!this.head) {
+//             return;
+//         }
+
+//         while (this.head && this.head.value === value) {
+//             this.head = this.head.next;
+//         }
+
+//         let curNode = this.head;
+
+//         while (curNode.next) {
+//             if (curNode.next.value === value) {
+//                 curNode.next = curNode.next.next;
+//             } else {
+//                 curNode = curNode.next;
+//             }
+
+//         }
+//     }
+
+//     toArray() {
+//         let elements = [];
+
+//         let curNode = this.head;
+
+//         while (curNode) {
+//             elements.push(curNode);
+//             curNode = curNode.next;
+//         }
+
+//         return elements;
+//     }
+// }
+
+// const linkedList1 = new linkedList();
+
+// linkedList1.append(1);
+// linkedList1.append("Bye");
+// linkedList1.append(23);
+// linkedList1.append(12)
+// linkedList1.append(1);
+
+// linkedList1.prepend("new first");
+
+// linkedList1.delete(1);
+
+// console.log(linkedList1.toArray());
+
 class linkedList {
     constructor() {
         this.head = null;
@@ -7,60 +90,55 @@ class linkedList {
     }
 
     append(value) {
-        let newNode = {value : value, next : null};
+        const newNode = {value, next: null}
 
-        // if there is a node in this.tail, set the next value of tail to new Node
-        if (this.tail) {
+        if(this.tail) {
             this.tail.next = newNode;
         }
-        // if tail is empty, set the newNode as the tail
+
         this.tail = newNode;
 
-        // if head is empty, set newNode as the head also
         if (!this.head) {
             this.head = newNode;
         }
     }
 
-    // adding element in the beginning 
     prepend(value) {
-        let newNode = {value: value, next: this.head};
-
+        const newNode = {value, next: this.head}
+        
         this.head = newNode;
 
-        if (!this.tail) {
+        if(!this.tail) {
             this.tail = newNode;
         }
-
     }
 
-    delete(value) {
-        if (!this.head) {
-            return;
+    find(value) {
+        if(!this.head) {
+            return null;
         }
-
-        while (this.head && this.head.value === value) {
-            this.head = this.head.next;
-        }
-
+        
         let curNode = this.head;
 
-        while (curNode.next) {
-            if (curNode.next.value === value) {
-                curNode.next = curNode.next.next;
-            } else {
-                curNode = curNode.next;
+        while (curNode) {
+            // finding first occurance
+            if (curNode.value === value) {
+                return curNode;
             }
-
+            curNode = curNode.next;
         }
+
+        return null;
     }
+
+   
 
     toArray() {
         let elements = [];
 
         let curNode = this.head;
 
-        while (curNode) {
+        while(curNode) {
             elements.push(curNode);
             curNode = curNode.next;
         }
@@ -69,16 +147,15 @@ class linkedList {
     }
 }
 
-const linkedList1 = new linkedList();
+const test1 = new linkedList();
 
-linkedList1.append(1);
-linkedList1.append("Bye");
-linkedList1.append(23);
-linkedList1.append(12)
-linkedList1.append(1);
+test1.append(1);
+test1.append(3);
+test1.append(4);
 
-linkedList1.prepend("new first");
+test1.prepend('start');
+test1.append('end');
 
-linkedList1.delete(1);
+let print = test1.toArray();
 
-console.log(linkedList1.toArray());
+console.log(print);
