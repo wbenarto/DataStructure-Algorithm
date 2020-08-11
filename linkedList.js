@@ -1,5 +1,3 @@
-const { link } = require("fs");
-
 // class linkedList {
 //     constructor() {
 //         this.head = null;
@@ -113,6 +111,15 @@ class linkedList {
         }
     }
 
+    insertAfter(value, afterValue) {
+        const existingNode = this.find(afterValue);
+
+        if(existingNode) {
+            const newNode = {value, next: existingNode.next};
+            existingNode.next = newNode;
+        }
+    }
+
     find(value) {
         if(!this.head) {
             return null;
@@ -132,21 +139,21 @@ class linkedList {
     }
     
     delete(value) {
-        if(!this.head) {
+        if (!this.head) {
             return null;
         }
 
         while (this.head && this.head.value === value) {
-            this.head = this.head.next;
+            this.head = this.head.next
         }
 
         let curNode = this.head;
 
         while (curNode.next) {
             if(curNode.next.value === value) {
-                curNode.next = curNode.next.next;
+                curNode.next = curNode.next.next
             } else {
-                curNode = curNode.next;
+                curNode = curNode.next
             }
         }
 
@@ -154,9 +161,6 @@ class linkedList {
             this.tail = curNode;
         }
     }
-    
-    
-   
 
     toArray() {
         let elements = [];
@@ -181,7 +185,9 @@ test1.append(4);
 test1.prepend('start');
 test1.append('end');
 test1.delete('end');
-test1.delete(3);
+
+test1.insertAfter('second', 'start')
+
 let print = test1.toArray();
 
 console.log(print);
