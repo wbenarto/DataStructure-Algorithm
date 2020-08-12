@@ -5,51 +5,77 @@
 //     }
 
 //     append(value) {
-//         let newNode = {value : value, next : null};
+//         const newNode = {value, next: null}
 
-//         // if there is a node in this.tail, set the next value of tail to new Node
-//         if (this.tail) {
+//         if(this.tail) {
 //             this.tail.next = newNode;
 //         }
-//         // if tail is empty, set the newNode as the tail
+
 //         this.tail = newNode;
 
-//         // if head is empty, set newNode as the head also
 //         if (!this.head) {
 //             this.head = newNode;
 //         }
 //     }
 
-//     // adding element in the beginning 
 //     prepend(value) {
-//         let newNode = {value: value, next: this.head};
-
+//         const newNode = {value, next: this.head}
+        
 //         this.head = newNode;
 
-//         if (!this.tail) {
+//         if(!this.tail) {
 //             this.tail = newNode;
 //         }
-
 //     }
 
+//     insertAfter(value, afterValue) {
+//         const existingNode = this.find(afterValue);
+
+//         if(existingNode) {
+//             const newNode = {value, next: existingNode.next};
+//             existingNode.next = newNode;
+//         }
+//     }
+
+//     find(value) {
+//         if(!this.head) {
+//             return null;
+//         }
+        
+//         let curNode = this.head;
+
+//         while (curNode) {
+//             // finding first occurance
+//             if (curNode.value === value) {
+//                 return curNode;
+//             }
+//             curNode = curNode.next;
+//         }
+
+//         return null;
+//     }
+    
 //     delete(value) {
 //         if (!this.head) {
-//             return;
+//             return null;
 //         }
 
 //         while (this.head && this.head.value === value) {
-//             this.head = this.head.next;
+//             this.head = this.head.next
 //         }
 
 //         let curNode = this.head;
 
 //         while (curNode.next) {
-//             if (curNode.next.value === value) {
-//                 curNode.next = curNode.next.next;
+//             if(curNode.next.value === value) {
+//                 curNode.next = curNode.next.next
 //             } else {
-//                 curNode = curNode.next;
+//                 curNode = curNode.next
 //             }
+//         }
 
+//         if (this.tail.value === value) {
+//             this.tail = curNode;
 //         }
 //     }
 
@@ -58,7 +84,7 @@
 
 //         let curNode = this.head;
 
-//         while (curNode) {
+//         while(curNode) {
 //             elements.push(curNode);
 //             curNode = curNode.next;
 //         }
@@ -67,19 +93,23 @@
 //     }
 // }
 
-// const linkedList1 = new linkedList();
+// const test1 = new linkedList();
 
-// linkedList1.append(1);
-// linkedList1.append("Bye");
-// linkedList1.append(23);
-// linkedList1.append(12)
-// linkedList1.append(1);
+// test1.append(1);
+// test1.append(3);
+// test1.append(4);
 
-// linkedList1.prepend("new first");
+// test1.prepend('start');
+// test1.append('end');
+// test1.delete('end');
 
-// linkedList1.delete(1);
+// test1.insertAfter('second', 'start')
 
-// console.log(linkedList1.toArray());
+// let print = test1.toArray();
+
+// console.log(print);
+// console.log(test1.find(3));
+
 
 class linkedList {
     constructor() {
@@ -87,8 +117,9 @@ class linkedList {
         this.tail = null;
     }
 
+    // add elements in the end / tail of list
     append(value) {
-        const newNode = {value, next: null}
+        const newNode = {value, next: null};
 
         if(this.tail) {
             this.tail.next = newNode;
@@ -99,57 +130,62 @@ class linkedList {
         if (!this.head) {
             this.head = newNode;
         }
+    
     }
 
+
+    // adding element in the beginning / head
     prepend(value) {
         const newNode = {value, next: this.head}
-        
-        this.head = newNode;
 
-        if(!this.tail) {
+    
+        this.head = newNode;
+        
+
+        if (!this.tail) {
             this.tail = newNode;
         }
     }
 
     insertAfter(value, afterValue) {
-        const existingNode = this.find(afterValue);
+        let existingNode = this.find(afterValue);
 
         if(existingNode) {
-            const newNode = {value, next: existingNode.next};
-            existingNode.next = newNode;
+           let newNode = {value, next: existingNode.next}
+           existingNode.next = newNode;
         }
+
     }
 
     find(value) {
         if(!this.head) {
             return null;
         }
-        
+
         let curNode = this.head;
 
-        while (curNode) {
-            // finding first occurance
-            if (curNode.value === value) {
+        while(curNode) {
+            if(curNode.value === value) {
                 return curNode;
             }
-            curNode = curNode.next;
+            curNode = curNode.next
         }
 
         return null;
     }
-    
+
     delete(value) {
         if (!this.head) {
             return null;
         }
 
         while (this.head && this.head.value === value) {
-            this.head = this.head.next
+            this.head = this.head.next;
         }
 
         let curNode = this.head;
 
-        while (curNode.next) {
+        while(curNode.next) {
             if(curNode.next.value === value) {
                 curNode.next = curNode.next.next
             } else {
@@ -158,37 +194,43 @@ class linkedList {
         }
 
         if (this.tail.value === value) {
-            this.tail = curNode;
+            this.tail = curNode
         }
-    }
 
+        return null;
+    }
+    
     toArray() {
         let elements = [];
 
         let curNode = this.head;
 
-        while(curNode) {
+        while(curNode){
             elements.push(curNode);
             curNode = curNode.next;
         }
-
         return elements;
     }
 }
 
-const test1 = new linkedList();
+const test = new linkedList()
 
-test1.append(1);
-test1.append(3);
-test1.append(4);
 
-test1.prepend('start');
-test1.append('end');
-test1.delete('end');
 
-test1.insertAfter('second', 'start')
+test.append(1);
+test.append('2');
+test.append(3);
+test.append('4');
+test.append('five');
 
-let print = test1.toArray();
+test.prepend('first');
 
-console.log(print);
-console.log(test1.find(3));
+test.delete('five');
+
+test.insertAfter(6, '4')
+
+test.find(0)
+let print = test.toArray()
+console.log(print)
+
+console.log(test.find(1))
