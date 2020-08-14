@@ -111,7 +111,7 @@
 // console.log(test1.find(3));
 
 
-class linkedList {
+class LinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
@@ -200,6 +200,23 @@ class linkedList {
         return null;
     }
     
+    // delete first item
+    deleteHead() {
+        if (!this.head) {
+            return null;
+        }
+        const deletedItem = this.head;
+
+        if (this.head.next) {
+            this.head = this.head.next;
+        } else {
+            this.head = null;
+            this.tail = null;
+        }
+
+        return deletedItem;
+    }
+
     toArray() {
         let elements = [];
 
@@ -213,7 +230,7 @@ class linkedList {
     }
 }
 
-const test = new linkedList()
+const test = new LinkedList()
 
 
 
@@ -234,3 +251,5 @@ let print = test.toArray()
 console.log(print)
 
 console.log(test.find(1))
+console.log('linkedlist fired')
+
