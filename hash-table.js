@@ -65,7 +65,11 @@ class HashTable {
 
     get(key) {
         const keyHash = this.hash(key);
-        return this.buckets[keyHash];
+        const bucketArray = this.buckets[keyHash];
+        const storedElement = bucketArray.find(el => {
+            return el.key === key;
+        })
+        return storedElement;
     }
 
     showInfo() {
@@ -85,17 +89,3 @@ const table1 = new HashTable();
 
 
 
-const word = 'hello';
-
-function findFirstRep(str) {
-    const table = new HashTable();
-
-    for (const el of str) {
-        if (table.get(char)) {
-            return char;
-        }
-        table.set(char, 1);
-    }
-}
-
-console.log(findFirstRep(word))
