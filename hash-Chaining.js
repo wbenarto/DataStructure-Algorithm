@@ -36,7 +36,11 @@ class HashTable {
 
     get(key) {
         const hashKey = this.hash(key)
-        return this.buckets[hashKey]
+        const bucketArray = this.buckets[hashKey]
+        const storedElement = bucketArray.find((el) => {
+            return el.key === key;
+        })
+        return storedElement;
     }
 
     showInfo(key) {
