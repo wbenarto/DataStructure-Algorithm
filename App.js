@@ -57,27 +57,32 @@
 //     }
 // }
 
-
 class Node {
-    constructor(val, parentNode=null) {
-        this.children = [];
+    constructor(value, parentNode=null) {
         this.parent = parentNode;
-        this.val = val
+        this.children = [];
+        this.value = value;
     }
 
     addNode(value) {
-        const segment = value.split('/');
-        const existingChildNode = this.children.find(child=>{
+        // path /documents/pictures/webe.jpg
+        // documents pictures webe.jpg
+        const segments = value.split('/');
 
-        })
-        if (segments === 0) {
+        if (segments.length === 0) {
             return;
         }
+        if (segments.length === 1) {
+            return this.children.push(segments[0], this)
+        }
 
-        if (segments === 1) {}
+        const existingChildNode = this.children.find(child=>this.value === child)
 
-        this.children.push(segment)
-        console.log(this.children)
+        if (existingChildNode) {
+            const node = new Node(segments[0], this)
+            
+        }
+
     }
 
     removeNode() {
@@ -89,7 +94,71 @@ class Tree {
     constructor(rootValue) {
         this.root = new Node(rootValue)
     }
+
+    add(path) {
+        this.root.addNode(path)
+    }
 }
 
-const newTree = new Tree();
-newTree.root.addNode('1')
+const filesystem = new Tree('/');
+
+filesystem.add('/documents/picture/webe.jpg')
+filesystem.add('/nba/lakers')
+console.log(filesystem)
+// class Node {
+//     constructor(value, parentNode=null) {
+//         this.parent = parentNode;
+//         this.value = value;
+//         this.children = [];
+//     }
+
+//     addNode(value) {
+
+//         // existing = documents
+//         // val = /documents/pictures/homeschool
+//         // documents pictures homeschool
+//         const segment = value.split('/');
+
+//         if(segment.length === 0) {
+//             return;
+//         }
+
+
+
+//         if(segment.length === 1) {
+//             const node = new Node(segment[0], this);
+//             this.children.push(node);
+//             return {node: node, index: this.children.length - 1 }
+//         }
+
+//         const existingChildNode = this.children.find(child=> child.value === segment[0])
+
+//         if(existingChildNode) {
+//             // if first parent exists, add to that node, slice from index 1 and join by /
+//             existingChildNode.addNode(segment.slice(1).join("/"))
+//         } else {
+//             const node = new Node(segment[0], this)
+//             node.addNode(segment.slice(1).join('/'));
+//             this.children.push(node);
+//             return {node: node, index: this.children.length - 1}
+//         }
+//     }
+
+//     deleteNode(index) {
+//         return this.children.splice(index, 1)
+//     }
+// }
+
+// class Tree {
+//     constructor(rootValue) {
+//         this.root = new Node(rootValue)
+//     }
+
+//     add(path) {
+//         this.root.addNode(path)
+//     }
+
+//     remove(path) {
+
+//     }
+// }
