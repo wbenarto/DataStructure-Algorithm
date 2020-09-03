@@ -84,20 +84,39 @@ class Node {
     }
 
     // depth search first
-    find(value) {
+    // find(value) {
+    //     console.log(this)
+
+    //     for (const child of this.children) {
+    //         console.log("this.children" + this.children)
+    //         console.log('child' + child)
+    //         if(child.value === value) {
+    //             return child;
+    //         }
+    //         const nestedChildNode = child.find(value);
+    //         if (nestedChildNode) {
+    //             return nestedChildNode;
+    //         }
+    //     }
+    // }
+
+    // Breadth first search
+    find (value) {
         console.log(this)
 
-        for (const child of this.children) {
-            console.log("this.children" + this.children)
-            console.log('child' + child)
+        for(const child of this.children) {
             if(child.value === value) {
                 return child;
             }
+        }
+
+        for (const child of this.children) {
             const nestedChildNode = child.find(value);
             if (nestedChildNode) {
                 return nestedChildNode;
             }
         }
+       
     }
 }
 
@@ -143,6 +162,6 @@ filesystem.add('play')
 filesystem.remove('games/cod.exe')
 
 // finding node with this value
-console.log(filesystem.find('lookforthis'))
+console.log(filesystem.find('2ndchild'))
 
 console.log(filesystem)
