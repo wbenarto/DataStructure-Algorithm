@@ -4,6 +4,32 @@ class Node {
         this.left = null;
         this.right = null;
         this.parent = null;
+    }   
+
+    get leftDepth() {
+        // if no left child
+        if(!this.left) {
+            return 0;
+        }
+
+        return this.left.depth+1
+
+    }
+
+    get rightDepth() {
+        if (!this.right) {
+            return 0;
+        }
+        return this.right.depth+1
+    }
+
+    // Getter dynamic calculated property
+    get depth() {
+        return Math.max(this.leftDepth, this.rightDepth);
+    }
+
+    get balanceFactor() {
+        return this.leftDepth - this.rightDepth;
     }
 
     add(value) {
@@ -132,14 +158,46 @@ class Tree {
     }
 }
 
+class AVLTree extends Tree {
+    add(value) {
+        super.add(value);
+
+        let curNode = this.root.find(value);
+
+        this.balance(curNode);
+    }
+
+    remove(value) {
+        super.remove(value);
+
+        this.balance(this.root);
+    }
+
+    balance(node) {
+        if (node.balanceFactor < -1) {
+            if (node.right.balanceFactor < 0) {
+                this.rotateLeft();
+            } else if (node.right.balanceFactor > 0) {
+                this.rotateRightLeft(node);
+            }
+        } else if (node.balanceFactor > 1) {
+            if (node.left.balanceFactor < 0) {
+                this.rotateLeftRight(node);
+            } else if (node.left.balanceFactor > 0) {
+                this.rotateRight(node);
+            }
+        }
+    }
+}
+
 const newTree = new Tree();
 
-newTree.add(5)
 newTree.add(1)
-newTree.add(7)
-newTree.add(32)
-newTree.add(77)
-newTree.add(10)
+newTree.add(2)
+newTree.add(3)
+// newTree.add(32)
+// newTree.add(77)
+// newTree.add(10)
 
-newTree.find(5)
+// newTree.find(5)
 console.log(newTree)
