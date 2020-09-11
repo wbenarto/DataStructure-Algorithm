@@ -1,5 +1,3 @@
-const { runInThisContext } = require("vm");
-
 class Node {
     constructor (value) {
         this.value = value;
@@ -181,7 +179,7 @@ class AVLTree extends Tree {
     balance(node) {
         if (node.balanceFactor < -1) {
             if (node.right.balanceFactor < 0) {
-                this.rotateLeft();
+                this.rotateLeft(node);
             } else if (node.right.balanceFactor > 0) {
                 this.rotateRightLeft(node);
             }
@@ -235,13 +233,57 @@ class AVLTree extends Tree {
        leftNode.right = node;
        leftNode.right.parent = leftNode;
     }
+
+    rotateLeftRight(node) {
+        const leftNode = node.left;
+        node.left = null;
+
+        const leftRightNode = leftNode.right;
+        leftNode.right = null;
+
+        if (leftRightNode.left) {
+            leftNode.right = leftRightNode.left;
+            leftNode.right.parent = leftNode;
+            leftRightNode.left = null;
+        }
+
+        node.left = leftRightNode;
+        node.left.parent = node;
+
+        leftRightNode.left = leftNode;
+        leftRightNode.left.parent = leftRightNode;
+
+        this.rotateRight(node);
+    }
+
+    rotateRightLeft(node) {
+        const rightNode = node.right;
+        node.right = null;
+
+        const rightLeftNode = rightNode.left;
+        rightNode.left = null;
+
+        if (rightLeftNode.right) {
+            rightNode.left = rightLeftNode.right;
+            rightNode.left.parent = rightNode;
+            rightLeftNode.right = null;
+        }
+
+        node.right = rightLeftNode;
+        node.right.parent = node;
+
+        rightLeftNode.right = rightNode;
+        rightLeftNode.right.parent = rightLeftNode;
+
+        this.rotateLeft(node);
+    }
 }
 
-const newTree = new Tree();
+const newTree = new AVLTree();
 
 newTree.add(1)
-newTree.add(2)
 newTree.add(3)
+newTree.add(2)
 // newTree.add(32)
 // newTree.add(77)
 // newTree.add(10)
