@@ -1,3 +1,5 @@
+const { runInThisContext } = require("vm");
+
 class Node {
     constructor (value) {
         this.value = value;
@@ -164,7 +166,10 @@ class AVLTree extends Tree {
 
         let curNode = this.root.find(value);
 
-        this.balance(curNode);
+        while(curNode) {
+            this.balance(curNode);
+            curNode = curNode.parent;
+        }
     }
 
     remove(value) {
@@ -187,6 +192,48 @@ class AVLTree extends Tree {
                 this.rotateRight(node);
             }
         }
+    }
+
+    rotateLeft(node) {
+        const rightNode = node.right;
+        node.right = null;
+
+        if (node.parent) {
+            node.parent.right = rightNode;
+            node.parent.right.parent = node.parent;
+       } else if (node === this.root) {
+           this.root = rightNode;
+           this.root.parent = null;
+       }
+
+       if(rightNode.left) {
+           node.right = rightNode.left;
+           node.right.parent = node;
+       }
+
+       rightNode.left = node;
+       rightNode.left.parent = rightNode;
+    }
+
+    rotateRight(node) {
+        const leftNode = node.left;
+        node.left = null;
+
+        if (node.parent) {
+            node.parent.left = leftNode;
+            node.parent.left.parent = node.parent;
+       } else if (node === this.root) {
+           this.root = leftNode;
+           this.root.parent = null;
+       }
+
+       if(leftNode.right) {
+           node.left = leftNode.right;
+           node.left.parent = node;
+       }
+
+       leftNode.right = node;
+       leftNode.right.parent = leftNode;
     }
 }
 
