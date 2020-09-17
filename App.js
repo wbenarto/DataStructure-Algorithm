@@ -1,71 +1,46 @@
-class Node {
-    constructor(value, parentNode = null) {
-        this.parent = null;
-        this.right = null;
-        this.left = null;
-        this.value = value;
+class Heap {
+    constructor() {
+        this.heapElements = [];
+
     }
 
-    add (value) {
-        if (this.value === null) {
-            this.value = value;
-            return;
-        }
+    insert(value) {
+        this.heapElements.push(value);
 
-        // value to be added larger than this.value, so put it on the right 
-        if (this.value < value) {
-            if (this.right) {
-                this.right.add(value);
-                return;
-            }
+        // compare new value to existing elements
+        let currentElementIndex = this.heapElements.length -1;
+        console.log(currentElementIndex)
+        let parentElementIndex = Math.floor((currentElementIndex + 1)/2) -1;
 
-            const newNode = new Node(value);
-            this.right = newNode;
-            return;
-        }
-
-        // value to be added smaller than this.value, put it on the left
-        if (this.value > value) {
-            if (this.left) {
-                this.left.add(value);
-                return;
-            }
-            const newNode = new Node(value);
-            this.left = newNode;
-            return;
-        }
-    }
-
-    find (value) {
-        if (this.value === value ) {
-            return this;
-        }
-
-        // check if bigger or smaller, if smaller look left, if bigger look right
-        if (this.value < value && this.right) {
-          return  this.right.find(value);
-        }
-
-        if (this.value > value ** this.left) {
-            return this.left.find(value);
+        // check if need to switch parentElementIndex
+        // max heap
+        while(parentElementIndex >= 0 && this.heapElements[currentElementIndex] > this.heapElements[parentElementIndex]) {
+            const parentElement =this.heapElements[parentElementIndex];
+            this.heapElements[parentElementIndex] = value;
+            this.heapElements[currentElementIndex] = parentElement;
+            currentElementIndex = parentElementIndex;
+            parentElementIndex = Math.floor((currentElementIndex+1) / 2) - 1;
         }
     }
 }
 
-class Tree {
-    constructor () {
-        this.root = null;
-    }
+const heap = new Heap();
 
-    add (value) {
-        this.root.add(value);
-    }
+heap.insert(250);
+heap.insert(197);
 
-    remove (value) {
-        this.root.remove(value);
-    }
+heap.insert(85);
+// [250,85, 197]
+heap.insert(101);
+// [250, 85, 197, 101]
+heap.insert(12);
 
-    find (value) {
-        this.root.find(value)
-    }
-}
+// [250, 85, 197, 12, 101]
+heap.insert(40);
+// [250, 85, 197, 40, 101, 12]
+heap.insert(15);
+// [250, 85, 197, 12, 15, 40, 101]
+
+console.log(heap);
+
+// [250]
