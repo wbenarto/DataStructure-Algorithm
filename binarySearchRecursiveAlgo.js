@@ -1,10 +1,10 @@
 function findElement (arr, el, offset) {
     let startIndex = 0;
-    let endIndex = arr.length - 1;
-    let middleIndex = Math.floor((endIndex - startIndex)/2)
+    let lastIndex = arr.length - 1;
+    let middleIndex = Math.floor((lastIndex - startIndex)/2)
 
     if (arr[middleIndex] === el ) {
-        return middleIndex + offset;
+        return middleIndex;
     }
 
     // element is right side 
@@ -24,4 +24,4 @@ function findElement (arr, el, offset) {
 let arr = [0, 3, 5, 12, 31, 50, 72, 91 ,99, 200]
 
 
-console.log(findElement(arr, 99, 0))
+console.log(findElementIndex(arr, 99))
